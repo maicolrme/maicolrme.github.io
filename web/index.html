@@ -190,6 +190,32 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 24px rgba(255,107,107,0.3);
     }
+
+    @media (max-width: 768px) {
+      nav > div { flex-wrap: wrap; gap: 10px; justify-content: center !important; }
+      nav > div > div:nth-child(3) { display: none; }
+      nav > div > div:nth-child(2) { order: 3; width: 100%; justify-content: center; gap: 16px !important; }
+      #about > div { flex-direction: column; align-items: center !important; text-align: center; padding: 40px 16px 32px !important; }
+      #about > div > div:first-child { display: flex; flex-direction: column; align-items: center; }
+      #about .stat-pill { flex: 1; min-width: 80px; }
+      #about .social-btn { font-size: 0.72rem; padding: 6px 12px; }
+      .project-card { flex-direction: column !important; }
+      .project-card > div:first-child { width: 100% !important; height: 180px !important; }
+      section[id="projects"] { padding: 48px 16px !important; }
+      section[id="contact"] { padding: 48px 16px !important; }
+      h1 { font-size: 1.8rem !important; }
+      h2 { font-size: 1.6rem !important; }
+      #about > div > div:first-child p { max-width: 100% !important; }
+      #projects > div > div:first-child { flex-direction: column; align-items: flex-start !important; }
+      [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+    }
+
+    @media (max-width: 480px) {
+      #about .stat-pill { padding: 8px 12px; }
+      #about .stat-pill div:first-child { font-size: 1.1rem !important; }
+      .cta-btn { padding: 10px 18px !important; font-size: 0.75rem !important; }
+      .project-card > div:first-child { height: 150px !important; }
+    }
   </style>
 </head>
 <body>
@@ -246,7 +272,7 @@
             <div style="font-size: 0.68rem; color: #999; font-weight: 600;">Años exp.</div>
           </div>
           <div class="stat-pill">
-            <div style="font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 600; color: var(--accent2);">11+</div>
+            <div style="font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 600; color: var(--accent2);">35+</div>
             <div style="font-size: 0.68rem; color: #999; font-weight: 600;">Proyectos</div>
           </div>
           <div class="stat-pill">
