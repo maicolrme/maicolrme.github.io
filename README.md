@@ -9,7 +9,12 @@ Strong experience in **fintech and blockchain**, working with Ethereum and Solan
 
 ### Backend
 - Laravel / Lumen
+- Django
+- FastAPI
 - Node.js / Express
+- AdonisJS
+- Spring Boot
+- PHP
 - REST APIs
 - API Authentication (API Keys, 2FA)
 
@@ -18,14 +23,7 @@ Strong experience in **fintech and blockchain**, working with Ethereum and Solan
 - Nuxt
 - Bootstrap
 - Tailwind CSS
-
-### Blockchain & Fintech
-- Ethereum
-- Solana
-- ERC-20 Tokens
-- Wallet & Multi-Wallet Systems
-- Gas Relayers
-- Webhooks & Automation
+- Alpine.js
 
 ### Databases
 - MySQL
@@ -33,12 +31,40 @@ Strong experience in **fintech and blockchain**, working with Ethereum and Solan
 - MongoDB
 - Redis
 
+### Blockchain & Fintech
+- Ethereum
+- Solana
+- ERC-20 Tokens
+- Bitcoin
+- Litecoin
+- Web3
+- Wallet & Multi-Wallet Systems
+- Gas Relayers
+- Webhooks & Automation
+
 ### DevOps & Cloud
 - Linux Server Administration
 - AWS (EC2, S3)
 - Google Cloud
 - DigitalOcean
+- Docker
 - CI/CD & Git
+
+### Inteligencia Artificial
+- TensorFlow
+- PyTorch
+- OpenCV
+- Scikit-Learn
+- LangChain
+- Hugging Face
+- Ollama
+- DeepSeek R4
+
+### Automatización
+- GitHub Actions
+- Jenkins
+- Terraform
+- n8n
 
 ## Interests
 - SaaS & Startup Products
