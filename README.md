@@ -50,47 +50,47 @@ Strong experience in **fintech and blockchain**, working with Ethereum and Solan
 ## Projects
 
 - **[LostFinderr](https://lostfinderr.com)**  
-  Platform focused on asset recovery and lost item tracking.
-  ![LostFinderr Screenshot](screenshots/lostfinderr.png)
+  Platform focused on asset recovery and lost item tracking.  
+  <img src="web/screenshots/lostfinderr.png" width="200" alt="LostFinderr Screenshot">
 
 - **[DevSee](https://devsee.pro)**  
-  Talent recruitment and management solution for scaling teams.
-  ![BulkTalent Screenshot](screenshots/bulktalent.png)
+  Talent recruitment and management solution for scaling teams.  
+  <img src="web/screenshots/bulktalent.png" width="200" alt="DevSee Screenshot">
 
 - **[FreeForDevs](https://freefordevs.com)**  
-  A comprehensive collection of free resources, tools, and services for developers.
-  ![FreeForDevs Screenshot](screenshots/freefordevs.png)
+  A comprehensive collection of free resources, tools, and services for developers.  
+  <img src="web/screenshots/freefordevs.png" width="200" alt="FreeForDevs Screenshot">
 
 - **[DomainExo](https://domainexo.com)**  
-  Domain management and digital asset marketplace platform.
-  ![DomainExo Screenshot](screenshots/domainexo.png)
+  Domain management and digital asset marketplace platform.  
+  <img src="web/screenshots/domainexo.png" width="200" alt="DomainExo Screenshot">
 
 - **[NettChain](https://nettchain.com)**  
-  Blockchain infrastructure and network integration solutions.
-  ![NettChain Screenshot](screenshots/nettchain.png)
+  Blockchain infrastructure and network integration solutions.  
+  <img src="web/screenshots/nettchain.png" width="200" alt="NettChain Screenshot">
 
 - **[NettChain PHP SDK](https://github.com/nettchain/phpsdk)**  
-  PHP SDK for integrating with the NettChain blockchain API. Supports wallet operations, transactions, and smart contract interactions.
-  ![NettChain PHP SDK Screenshot](screenshots/nettchain-phpsdk.png)
+  PHP SDK for integrating with the NettChain blockchain API. Supports wallet operations, transactions, and smart contract interactions.  
+  <img src="web/screenshots/nettchain-phpsdk.png" width="200" alt="NettChain PHP SDK Screenshot">
 
 - **[Spring Boot + Nuxt 4 CRUD](https://github.com/maicolrme/sprintBootNuxt)**  
-  Full-stack application featuring a Spring Boot 3.2 backend and Nuxt 4 frontend. Includes JWT authentication (stateless), Role-Based Access Control (RBAC), database migrations with Flyway, and API documentation via Swagger/OpenAPI.
-  ![Spring Boot + Nuxt CRUD Screenshot](screenshots/springboot-nuxt.png)
+  Full-stack application featuring a Spring Boot 3.2 backend and Nuxt 4 frontend. Includes JWT authentication (stateless), Role-Based Access Control (RBAC), database migrations with Flyway, and API documentation via Swagger/OpenAPI.  
+  <img src="web/screenshots/springboot-nuxt.png" width="200" alt="Spring Boot + Nuxt CRUD Screenshot">
 
 - **[Team4Labs](https://team4labs.com)**  
-  Platform built with Nuxt 4, Laravel backend, DigitalOcean cloud, Redis, and PostgreSQL.
-  ![Team4Labs Screenshot](screenshots/team4labs.png)
+  Platform built with Nuxt 4, Laravel backend, DigitalOcean cloud, Redis, and PostgreSQL.  
+  <img src="web/screenshots/team4labs.png" width="200" alt="Team4Labs Screenshot">
 
 - **[Exchanger21](http://exchanger21.devsee.pro)**  
-  Cryptocurrency exchange platform built with AdonisJS backend, Nuxt 4, DigitalOcean, Redis, MySQL, Docker. Features matching engine, P2P marketplace, and real-time events.
-  ![Exchanger21 Screenshot](screenshots/exchanger21.png)
+  Cryptocurrency exchange platform built with AdonisJS backend, Nuxt 4, DigitalOcean, Redis, MySQL, Docker. Features matching engine, P2P marketplace, and real-time events.  
+  <img src="web/screenshots/exchanger21.png" width="200" alt="Exchanger21 Screenshot">
 
 - **[P2P Market](http://p2pmarket.devsee.pro)**  
-  Local P2P marketplace with Laravel backend, microservices for cryptocurrencies (Bitcoin, Ethereum, Litecoin), MySQL, Redis, MongoDB, Docker, and real-time event handling.
-  ![P2P Market Screenshot](screenshots/p2pmarket.png)
+  Local P2P marketplace with Laravel backend, microservices for cryptocurrencies (Bitcoin, Ethereum, Litecoin), MySQL, Redis, MongoDB, Docker, and real-time event handling.  
+  <img src="web/screenshots/p2pmarket.png" width="200" alt="P2P Market Screenshot">
 
 - **[DateOnline](https://date-online.app)**  
-  Dating/meeting application demo built with Laravel 11, Tailwind CSS, Alpine.js, and MySQL.
-  ![DateOnline Screenshot](screenshots/dateonline.png)
+  Dating/meeting application demo built with Laravel 11, Tailwind CSS, Alpine.js, and MySQL.  
+  <img src="web/screenshots/dateonline.png" width="200" alt="DateOnline Screenshot">
 
 
