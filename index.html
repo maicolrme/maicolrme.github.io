@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio · Maicol Romero</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.4.21/vue.global.prod.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --accent: #FF6B6B;
+      --accent2: #4ECDC4;
+      --accent3: #FFE66D;
+      --soft: #F7F7F5;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #FFFFFF;
+      color: #1a1a1a;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Fraunces', serif;
+    }
+
+    /* Dot pattern background */
+    .dot-bg {
+      background-image: radial-gradient(circle, #e0e0e0 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Animated entry */
+    [v-cloak] { opacity: 0; }
+
+    .fade-in {
+      animation: fadeUp 0.6s ease both;
+    }
+    .fade-in:nth-child(2) { animation-delay: 0.1s; }
+    .fade-in:nth-child(3) { animation-delay: 0.2s; }
+    .fade-in:nth-child(4) { animation-delay: 0.3s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Avatar ring */
+    .avatar-ring {
+      background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
+      padding: 3px;
+      border-radius: 50%;
+    }
+    .avatar-inner {
+      background: #fff;
+      border-radius: 50%;
+      padding: 3px;
+    }
+
+    /* Skill pill */
+    .skill-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .skill-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+    }
+
+    /* Skill group header */
+    .group-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 6px;
+    }
+
+    /* Project card */
+    .project-card {
+      background: #fff;
+      border: 1.5px solid #F0F0EE;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      border-color: var(--accent2);
+    }
+
+    .project-card img {
+      transition: transform 0.4s ease;
+    }
+    .project-card:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Tag */
+    .tag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: var(--soft);
+      color: #555;
+    }
+
+    /* Nav dot */
+    .nav-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: inline-block;
+    }
+
+    /* Stat pill */
+    .stat-pill {
+      background: var(--soft);
+      border-radius: 12px;
+      padding: 10px 18px;
+      text-align: center;
+    }
+
+    /* Section divider */
+    .wavy-line {
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+      border-radius: 2px;
+      width: 48px;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f9f9f9; }
+    ::-webkit-scrollbar-thumb { background: #ddd; border-radius: 3px; }
+
+    /* Social btn */
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: 1.5px solid #eee;
+      transition: all 0.2s;
+      background: white;
+      color: #333;
+      text-decoration: none;
+    }
+    .social-btn:hover {
+      background: #1a1a1a;
+      color: white;
+      border-color: #1a1a1a;
+    }
+
+    /* CTA button */
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      background: #1a1a1a;
+      color: white;
+      text-decoration: none;
+      transition: all 0.2s;
+      letter-spacing: 0.01em;
+    }
+    .cta-btn:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255,107,107,0.3);
+    }
+  </style>
+</head>
+<body>
+<div id="app" v-cloak>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav style="position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid #f0f0ee;">
+    <div style="max-width: 1100px; margin: 0 auto; padding: 14px 28px; display: flex; align-items: center; justify-content: space-between;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span class="nav-dot"></span>
+        <span style="font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.1rem;">Maicol Romero</span>
+      </div>
+      <div style="display: flex; gap: 28px; font-size: 0.82rem; font-weight: 500; color: #555;">
+        <a href="#about" style="text-decoration:none; color:inherit; hover:color:#000;">About</a>
+        <a href="#projects" style="text-decoration:none; color:inherit;">Projects</a>
+        <a href="#contact" style="text-decoration:none; color:inherit;">Contact</a>
+      </div>
+      <a href="mailto:maicolrme@gmail.com" class="cta-btn" style="padding: 8px 20px; font-size: 0.78rem;">
+        Hablemos ✦
+      </a>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section id="about" class="dot-bg" style="padding: 72px 28px 64px;">
+    <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start;">
+
+      <!-- LEFT: Avatar + Info -->
+      <div class="fade-in" style="flex: 0 0 auto;">
+        <div class="avatar-ring" style="width: 150px; height: 150px; margin-bottom: 20px;">
+          <div class="avatar-inner">
+            <img
+              src="assets/perfil.jpg"
+              style="width: 138px; height: 138px; border-radius: 50%; display: block; object-fit: cover;"
+              alt="Maicol Romero"
+            />
+          </div>
+        </div>
+        <h1 style="font-size: 2.4rem; font-weight: 600; line-height: 1.1; margin-bottom: 8px;">
+          Maicol<br/><em style="color: var(--accent);">Romero</em>
+        </h1>
+        <p style="font-size: 0.88rem; color: #888; font-weight: 500; margin-bottom: 20px; letter-spacing: 0.04em;">
+          Full Stack Developer
+        </p>
+
+        <p style="font-size: 0.88rem; color: #555; max-width: 280px; line-height: 1.7; margin-bottom: 24px;">
+          I build scalable SaaS platforms, fintech systems, and blockchain solutions. Passionate about clean architecture, smart contracts, and turning ideas into production-ready products.
+        </p>
+
+        <!-- Stats -->
+        <div style="display: flex; gap: 10px; margin-bottom: 24px;">
+          <div class="stat-pill">
+            <div style="font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 600; color: var(--accent);">9+</div>
+            <div style="font-size: 0.68rem; color: #999; font-weight: 600;">Años exp.</div>
+          </div>
+          <div class="stat-pill">
+            <div style="font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 600; color: var(--accent2);">11+</div>
+            <div style="font-size: 0.68rem; color: #999; font-weight: 600;">Proyectos</div>
+          </div>
+          <div class="stat-pill">
+            <div style="font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 600; color: #FFB347;">30+</div>
+            <div style="font-size: 0.68rem; color: #999; font-weight: 600;">Clientes</div>
+          </div>
+        </div>
+
+        <!-- Social -->
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <a href="https://github.com/maicolrme" target="_blank" rel="noopener" class="social-btn">
+            <img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/11.7.0/github.svg" width="14" height="14" style="filter: invert(0.3);" />
+            GitHub
+          </a>
+          <a href="https://linkedin.com/in/maicolrme" target="_blank" rel="noopener" class="social-btn">
+            <img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/11.7.0/linkedin.svg" width="14" height="14" style="filter: invert(0.3);" />
+            LinkedIn
+          </a>
+          <a href="https://twitter.com/maicolrme" target="_blank" rel="noopener" class="social-btn">
+            <img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/11.7.0/twitter.svg" width="14" height="14" style="filter: invert(0.3);" />
+            Twitter
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT: Skills -->
+      <div class="fade-in" style="flex: 1; min-width: 280px;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 28px;">
+          <div class="wavy-line"></div>
+          <h2 style="font-size: 1.1rem; font-weight: 600; letter-spacing: -0.01em;">Skills & Technologies</h2>
+        </div>
+
+        <!-- Grid of skill groups -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px;">
+
+          <div v-for="group in skillGroups" :key="group.label">
+            <div class="group-label" :style="{ color: group.color }">{{ group.label }}</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+              <div
+                v-for="skill in group.skills"
+                :key="skill.name"
+                class="skill-pill"
+                :style="{ background: group.bg, color: group.color }"
+              >
+                <img :src="skill.icon" :alt="skill.name" style="width:14px; height:14px; object-fit:contain;" />
+                {{ skill.name }}
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PROJECTS ═══ -->
+  <section id="projects" style="padding: 72px 28px; background: white;">
+    <div style="max-width: 1100px; margin: 0 auto;">
+
+      <!-- Header -->
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 48px; flex-wrap: wrap; gap: 16px;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+            <div class="wavy-line"></div>
+            <span style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; color: #aaa; text-transform: uppercase;">Projects</span>
+          </div>
+          <h2 style="font-size: 2.2rem; font-weight: 600; line-height: 1.1;">
+            Selected<br /><em style="color: var(--accent2);">work</em>
+          </h2>
+        </div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button
+            v-for="f in ['Todos', 'Fullstack', 'Backend', 'Blockchain']"
+            :key="f"
+            @click="activeFilter = f"
+            :style="{
+              padding: '8px 16px',
+              borderRadius: '999px',
+              fontSize: '0.78rem',
+              fontWeight: '600',
+              border: '1.5px solid',
+              borderColor: activeFilter === f ? '#1a1a1a' : '#eee',
+              background: activeFilter === f ? '#1a1a1a' : 'white',
+              color: activeFilter === f ? 'white' : '#555',
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+              fontFamily: 'DM Sans, sans-serif'
+            }"
+          >{{ f }}</button>
+        </div>
+      </div>
+
+      <!-- List -->
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div
+          v-for="project in filteredProjects"
+          :key="project.id"
+          class="project-card fade-in"
+          style="display: flex; flex-direction: row; align-items: stretch;"
+        >
+          <!-- Image -->
+          <div style="overflow: hidden; width: 260px; height: 200px; flex-shrink: 0; background: #f5f5f5; position: relative;">
+            <img
+              :src="project.image"
+              :alt="project.title"
+              style="width: 100%; height: 100%; object-fit: cover; display: block;"
+            />
+            <div style="position: absolute; top: 12px; right: 12px;">
+              <span class="tag" :style="{ background: project.tagBg, color: project.tagColor }">
+                {{ project.type }}
+              </span>
+            </div>
+            <!-- Color accent dot -->
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 3px;"
+                 :style="{ background: project.accent }"></div>
+          </div>
+
+          <!-- Content -->
+          <div style="padding: 24px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+            <h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 6px; line-height: 1.2;">
+              {{ project.title }}
+            </h3>
+            <p style="font-size: 0.82rem; color: #777; line-height: 1.65; margin-bottom: 16px;">
+              {{ project.desc }}
+            </p>
+
+            <!-- Tech tags -->
+            <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px;">
+              <span v-for="t in project.tech" :key="t" class="tag">{{ t }}</span>
+            </div>
+
+            <!-- Links -->
+            <div style="display: flex; gap: 10px;">
+              <a :href="project.url" target="_blank" rel="noopener" style="font-size: 0.78rem; font-weight: 700; color: #1a1a1a; text-decoration: none; display: flex; align-items: center; gap: 4px;">
+                Demo →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ═══ -->
+  <section id="contact" style="padding: 80px 28px; background: var(--soft);">
+    <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+      <div style="display: flex; justify-content: center; margin-bottom: 16px;">
+        <div class="wavy-line"></div>
+      </div>
+      <h2 style="font-size: 2.4rem; font-weight: 600; line-height: 1.15; margin-bottom: 16px;">
+        Have a project<br /><em style="color: var(--accent);">in mind?</em>
+      </h2>
+      <p style="color: #888; font-size: 0.9rem; line-height: 1.7; margin-bottom: 32px;">
+        I'm available for freelance work and interesting collaborations. Let's talk.
+      </p>
+      <a href="mailto:maicolrme@gmail.com" class="cta-btn" style="font-size: 0.9rem; padding: 14px 36px;">
+        maicolrme@gmail.com ✦
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer style="padding: 24px 28px; border-top: 1px solid #f0f0ee; text-align: center; font-size: 0.75rem; color: #ccc;">
+    Made with ♥ by Maicol Romero · {{ new Date().getFullYear() }}
+  </footer>
+
+</div>
+
+<script>
+const { createApp, ref, computed } = Vue;
+
+createApp({
+  setup() {
+    const activeFilter = ref('Todos');
+
+    const skillGroups = ref([
+      {
+        label: 'Backend',
+        color: '#2563EB',
+        bg: '#EFF6FF',
+        skills: [
+          { name: 'Laravel',   icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg' },
+          { name: 'Django',    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg' },
+          { name: 'FastAPI',   icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg' },
+          { name: 'Node.js',   icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+          { name: 'AdonisJS',  icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+          { name: 'Spring Boot', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg' },
+          { name: 'Express',   icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg' },
+          { name: 'PHP',       icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg' },
+        ]
+      },
+      {
+        label: 'Frontend',
+        color: '#7C3AED',
+        bg: '#F5F3FF',
+        skills: [
+          { name: 'Vue.js',    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg' },
+          { name: 'Nuxt',      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg' },
+          { name: 'Tailwind',  icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg' },
+          { name: 'Bootstrap', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg' },
+          { name: 'Alpine.js', icon: '' },
+        ]
+      },
+      {
+        label: 'Databases',
+        color: '#059669',
+        bg: '#ECFDF5',
+        skills: [
+          { name: 'MySQL',     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+          { name: 'PostgreSQL',icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
+          { name: 'MongoDB',   icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+          { name: 'Redis',     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
+        ]
+      },
+      {
+        label: 'DevOps & Cloud',
+        color: '#B45309',
+        bg: '#FFFBEB',
+        skills: [
+          { name: 'Docker',    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
+          { name: 'DigitalOcean', icon: '' },
+          { name: 'AWS',       icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg' },
+          { name: 'Linux',     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg' },
+          { name: 'Git',       icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
+          { name: 'CI/CD',     icon: '' },
+        ]
+      },
+      {
+        label: 'Blockchain & Fintech',
+        color: '#F7931A',
+        bg: '#FFF7ED',
+        skills: [
+          { name: 'Ethereum',  icon: 'https://cdn.simpleicons.org/ethereum' },
+          { name: 'Solana',    icon: 'https://cdn.simpleicons.org/solana' },
+          { name: 'ERC-20',    icon: '' },
+          { name: 'Bitcoin',   icon: 'https://cdn.simpleicons.org/bitcoin' },
+          { name: 'Litecoin',  icon: 'https://cdn.simpleicons.org/litecoin' },
+          { name: 'Web3',      icon: '' },
+        ]
+      },
+      {
+        label: 'Inteligencia Artificial',
+        color: '#D946EF',
+        bg: '#FDF4FF',
+        skills: [
+          { name: 'TensorFlow', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg' },
+          { name: 'PyTorch',    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg' },
+          { name: 'OpenCV',     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg' },
+          { name: 'Scikit-Learn', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg' },
+          { name: 'LangChain',  icon: '' },
+          { name: 'Hugging Face', icon: '' },
+          { name: 'Ollama',     icon: '' },
+          { name: 'DeepSeek R4', icon: '' },
+        ]
+      },
+      {
+        label: 'Automatización',
+        color: '#0891B2',
+        bg: '#ECFEFF',
+        skills: [
+          { name: 'GitHub Actions', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg' },
+          { name: 'Jenkins',    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg' },
+          { name: 'Terraform',  icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg' },
+          { name: 'n8n',        icon: '' },
+        ]
+      },
+    ]);
+
+    const projects = ref([
+      {
+        id: 1,
+        title: 'LostFinderr',
+        desc: 'Platform focused on asset recovery and lost item tracking. Report, search, and recover lost belongings.',
+        image: 'screenshots/lostfinderr.png',
+        type: 'Fullstack',
+        url: 'https://lostfinderr.com',
+        tech: ['Vue.js', 'Nuxt', 'Laravel', 'MySQL', 'Redis'],
+        accent: 'linear-gradient(90deg, #4ECDC4, #44A08D)',
+        tagBg: '#ECFDF5', tagColor: '#059669',
+      },
+      {
+        id: 2,
+        title: 'DevSee',
+        desc: 'Talent recruitment and management platform for scaling teams. Connects companies with skilled developers.',
+        image: 'screenshots/bulktalent.png',
+        type: 'Fullstack',
+        url: 'https://devsee.pro',
+        tech: ['Vue.js', 'Nuxt', 'Laravel', 'MySQL', 'Redis'],
+        accent: 'linear-gradient(90deg, #FF6B6B, #FF8E53)',
+        tagBg: '#FFF1F2', tagColor: '#BE123C',
+      },
+      {
+        id: 3,
+        title: 'FreeForDevs',
+        desc: 'Comprehensive collection of free resources, tools, and services for developers worldwide.',
+        image: 'screenshots/freefordevs.png',
+        type: 'Fullstack',
+        url: 'https://freefordevs.com',
+        tech: ['Vue.js', 'Nuxt', 'Laravel', 'MySQL', 'Redis'],
+        accent: 'linear-gradient(90deg, #A78BFA, #7C3AED)',
+        tagBg: '#F5F3FF', tagColor: '#7C3AED',
+      },
+      {
+        id: 4,
+        title: 'DomainExo',
+        desc: 'Domain management and digital asset marketplace platform. Buy, sell, and manage domain names.',
+        image: 'screenshots/domainexo.png',
+        type: 'Fullstack',
+        url: 'https://domainexo.com',
+        tech: ['Vue.js', 'Nuxt', 'Laravel', 'MySQL', 'Redis'],
+        accent: 'linear-gradient(90deg, #FFE66D, #F7B731)',
+        tagBg: '#FFFBEB', tagColor: '#B45309',
+      },
+      {
+        id: 5,
+        title: 'NettChain',
+        desc: 'Blockchain infrastructure and network integration solutions. APIs and tools for blockchain interaction.',
+        image: 'screenshots/nettchain.png',
+        type: 'Blockchain',
+        url: 'https://nettchain.com',
+        tech: ['Laravel', 'Node.js', 'Ethereum', 'Solana', 'MongoDB'],
+        accent: 'linear-gradient(90deg, #F7931A, #FFB347)',
+        tagBg: '#FFF7ED', tagColor: '#C2410C',
+      },
+      {
+        id: 6,
+        title: 'NettChain PHP SDK',
+        desc: 'Official PHP SDK for NettChain blockchain API. Wallet ops, transactions, and smart contract interactions.',
+        image: 'screenshots/nettchain-phpsdk.png',
+        type: 'Backend',
+        url: 'https://github.com/nettchain/phpsdk',
+        tech: ['PHP', 'Guzzle', 'REST API'],
+        accent: 'linear-gradient(90deg, #74B9FF, #0984E3)',
+        tagBg: '#EFF6FF', tagColor: '#1D4ED8',
+      },
+      {
+        id: 7,
+        title: 'Spring Boot + Nuxt 4 CRUD',
+        desc: 'Full-stack CRUD with Spring Boot 3.2 backend and Nuxt 4 frontend. JWT auth, RBAC, Flyway, Swagger.',
+        image: 'screenshots/springboot-nuxt.png',
+        type: 'Fullstack',
+        url: 'https://github.com/maicolrme/sprintBootNuxt',
+        tech: ['Spring Boot', 'Java 17', 'Nuxt 4', 'PostgreSQL', 'Docker'],
+        accent: 'linear-gradient(90deg, #6DB33F, #4A9C2D)',
+        tagBg: '#F0FDF4', tagColor: '#15803D',
+      },
+      {
+        id: 8,
+        title: 'Team4Labs',
+        desc: 'Collaborative workspace platform with Kanban boards, shared docs, file management, and team communication.',
+        image: 'screenshots/team4labs.png',
+        type: 'Fullstack',
+        url: 'https://team4labs.com',
+        tech: ['Nuxt 4', 'Laravel', 'PostgreSQL', 'Redis', 'DigitalOcean'],
+        accent: 'linear-gradient(90deg, #6366F1, #4F46E5)',
+        tagBg: '#EEF2FF', tagColor: '#4338CA',
+      },
+      {
+        id: 9,
+        title: 'Exchanger21',
+        desc: 'Cryptocurrency exchange with matching engine, P2P marketplace, and real-time trading events.',
+        image: 'screenshots/exchanger21.png',
+        type: 'Fullstack',
+        url: 'http://exchanger21.devsee.pro',
+        tech: ['AdonisJS', 'Nuxt 4', 'MySQL', 'Redis', 'Docker'],
+        accent: 'linear-gradient(90deg, #10B981, #059669)',
+        tagBg: '#ECFDF5', tagColor: '#047857',
+      },
+      {
+        id: 10,
+        title: 'P2P Market',
+        desc: 'Local P2P crypto marketplace with escrow protection. Supports BTC, ETH, LTC and more.',
+        image: 'screenshots/p2pmarket.png',
+        type: 'Blockchain',
+        url: 'http://p2pmarket.devsee.pro',
+        tech: ['Laravel', 'MySQL', 'MongoDB', 'Redis', 'Docker'],
+        accent: 'linear-gradient(90deg, #F97316, #EA580C)',
+        tagBg: '#FFF7ED', tagColor: '#C2410C',
+      },
+      {
+        id: 11,
+        title: 'DateOnline',
+        desc: 'Premium classifieds and dating application with verified listings worldwide by category and city.',
+        image: 'screenshots/dateonline.png',
+        type: 'Fullstack',
+        url: 'https://date-online.app',
+        tech: ['Laravel 11', 'Tailwind', 'Alpine.js', 'MySQL'],
+        accent: 'linear-gradient(90deg, #DC2626, #B91C1C)',
+        tagBg: '#FEF2F2', tagColor: '#991B1B',
+      },
+    ]);
+
+    const filteredProjects = computed(() => {
+      if (activeFilter.value === 'Todos') return projects.value;
+      return projects.value.filter(p => p.type === activeFilter.value);
+    });
+
+    return { skillGroups, projects, filteredProjects, activeFilter };
+  }
+}).mount('#app');
+</script>
+</body>
+</html>
