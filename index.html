@@ -574,6 +574,7 @@ createApp({
     ]);
 
     const projects = ref([
+      /* PROYECTOS:INICIO */
       {
         id: 1,
         title: 'LostFinderr',
@@ -849,6 +850,40 @@ createApp({
         accent: 'linear-gradient(90deg, #FF6B6B, #4ECDC4)',
         tagBg: '#FFFBEB', tagColor: '#B45309',
       },
+      {
+        id: 26,
+        title: 'ReBook',
+        desc: 'Community library for exchanging physical books. Scan an ISBN, earn credits and discover new titles from other readers.',
+        image: 'web/screenshots/rebook.jpg',
+        type: 'Fullstack',
+        url: 'https://rebook.app2.maicolrme.dev',
+        tech: ['FastAPI', 'Python', 'React', 'SQLite'],
+        accent: 'linear-gradient(90deg, #D97706, #B45309)',
+        tagBg: '#FFFBEB', tagColor: '#B45309',
+      },
+      {
+        id: 27,
+        title: 'VíaEmpleo',
+        desc: 'Job portal to find work by skills. Advanced vacancy filters, recruiter and candidate profiles, matching and email alerts.',
+        image: 'web/screenshots/viaempleo.jpg',
+        type: 'Fullstack',
+        url: 'https://viaempleo.app2.maicolrme.dev',
+        tech: ['React', 'Vite', 'REST API'],
+        accent: 'linear-gradient(90deg, #2563EB, #1E3A8A)',
+        tagBg: '#EFF6FF', tagColor: '#1D4ED8',
+      },
+      {
+        id: 28,
+        title: 'OmeLink',
+        desc: 'Omegle-style random chat. Text conversations and end-to-end encrypted WebRTC video calls with strangers worldwide.',
+        image: 'web/screenshots/omelink.jpg',
+        type: 'Fullstack',
+        url: 'https://omelink.app2.maicolrme.dev',
+        tech: ['React', 'Vite', 'WebRTC', 'WebSocket'],
+        accent: 'linear-gradient(90deg, #F59E0B, #3B82F6)',
+        tagBg: '#FFF7ED', tagColor: '#C2410C',
+      },
+      /* PROYECTOS:FIN */
     ]);
 
     const filteredProjects = computed(() => {
